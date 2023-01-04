@@ -1,13 +1,7 @@
 const { chromium } = require('playwright-chromium');
 const fs = require("fs");
 
-(async () => {
-    let search = '';
-    for (let i = 2; i < process.argv.length; i++) {
-        search += process.argv[i] + ' ';
-    }
-    search = search.trim();
-
+async function scrape(search) {
     let browser = await chromium.launch({ slowMo: 150 });
     let page = await browser.newPage();
 
@@ -78,4 +72,7 @@ const fs = require("fs");
     });
 
     await browser.close();
-})();
+    return torrents;
+};
+
+module.exports = { scrape };

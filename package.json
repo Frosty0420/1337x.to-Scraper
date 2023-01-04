@@ -1,5 +1,26 @@
 {
   "dependencies": {
     "playwright-chromium": "^1.29.1"
-  }
+  },
+  "devDependencies": {
+    "electron": "^22.0.0"
+  },
+  "name": "1337x.to-scraper",
+  "description": "Playwright scraper which selects torrents uploaded by a certain user",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frosty0420/1337x.to-Scraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Frosty0420/1337x.to-Scraper/issues"
+  },
+  "homepage": "https://github.com/Frosty0420/1337x.to-Scraper#readme"
 }

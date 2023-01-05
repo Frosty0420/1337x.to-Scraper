@@ -2,13 +2,15 @@ const { chromium } = require('playwright-chromium');
 const fs = require("fs");
 
 async function scrape(search) {
-    let browser = await chromium.launch({ slowMo: 150 });
+    let browser = await chromium.launch();
     let page = await browser.newPage();
 
     await page.goto('https://1337x.to/');
+    await page.waitForSelector('[name="search"]');
     await page.fill('[name="search"]', search);
     await page.click('text=Search');
 
+    await page.waitForSelector('li.last a');
     const totalPages = await page.$$eval('li.last a', (t) => {
         const data = [];
         t.forEach(x => {
@@ -22,7 +24,7 @@ async function scrape(search) {
     let torrents = [];
     for (let i = 1; i <= totalPages; i++) {
         try {
-
+            await page.waitForSelector('tbody tr');
             let torrentsPerPage = await page.$$eval(
                 "tbody tr",
                 (torrentRow) => {

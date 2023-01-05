@@ -8,9 +8,9 @@ function createWindow() {
             preload: path.join(__dirname, 'preload.js')
         }
     });
-    mainWindow.webContents.setWindowOpenHandler(function (e, url) {
-        e.preventDefault();
+    mainWindow.webContents.setWindowOpenHandler(function ({ url }) {
         shell.openExternal(url);
+        return { action: 'deny'};
     });
     mainWindow.loadFile('index.html');
 }

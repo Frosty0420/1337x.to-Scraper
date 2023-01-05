@@ -5,6 +5,7 @@ const resultElement = document.getElementById('result');
 btn.addEventListener('click', async () => {
     const result = await electronAPI.search(searchElement.value);
 
+    resultElement.innerHTML = '';
     result.forEach(element => {
         element.torrents.forEach(t => {
             let h4 = document.createElement('h4');

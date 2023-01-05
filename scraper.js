@@ -12,7 +12,7 @@ async function scrape(search) {
     try {
         await page.waitForSelector('li.last a', { timeout: 500 });
     } catch (error) {
-        return 'No Results. Try again.';
+        return 'No results. Try again.';
     }
 
     const totalPages = await page.$$eval('li.last a', (t) => {

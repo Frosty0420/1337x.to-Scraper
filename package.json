@@ -8,7 +8,7 @@
   "name": "1337x.to-scraper",
   "description": "Playwright scraper which selects torrents uploaded by a certain user",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "electron-ui/main.js",
   "scripts": {
     "start": "electron ."
   },

@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain, shell } = require('electron');
 const path = require('path');
-const { scrape } = require('./script');
+const { scrape } = require('../scraper');
 
 function createWindow() {
     const mainWindow = new BrowserWindow({
@@ -12,7 +12,7 @@ function createWindow() {
         shell.openExternal(url);
         return { action: 'deny'};
     });
-    mainWindow.loadFile('index.html');
+    mainWindow.loadFile('electron-ui/index.html');
 }
 
 app.whenReady().then(() => {

@@ -72,11 +72,6 @@ async function scrape(search) {
         }
     }
 
-    // fs.writeFile('torrents.json', JSON.stringify(torrents), 'utf8', function (err) {
-    //     if (err) throw err;
-    //     console.log('complete');
-    // });
-
     await browser.close();
     return torrents;
 };

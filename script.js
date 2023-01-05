@@ -1,5 +1,4 @@
 const { chromium } = require('playwright-chromium');
-const fs = require("fs");
 
 async function scrape(search) {
     let browser = await chromium.launch();
@@ -10,7 +9,12 @@ async function scrape(search) {
     await page.fill('[name="search"]', search);
     await page.click('text=Search');
 
-    await page.waitForSelector('li.last a');
+    try {
+        await page.waitForSelector('li.last a', { timeout: 500 });
+    } catch (error) {
+        return 'No Results. Try again.';
+    }
+
     const totalPages = await page.$$eval('li.last a', (t) => {
         const data = [];
         t.forEach(x => {
@@ -68,10 +72,10 @@ async function scrape(search) {
         }
     }
 
-    fs.writeFile('torrents.json', JSON.stringify(torrents), 'utf8', function (err) {
-        if (err) throw err;
-        console.log('complete');
-    });
+    // fs.writeFile('torrents.json', JSON.stringify(torrents), 'utf8', function (err) {
+    //     if (err) throw err;
+    //     console.log('complete');
+    // });
 
     await browser.close();
     return torrents;

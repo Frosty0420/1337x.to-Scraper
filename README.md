@@ -1,7 +1,8 @@
 # 1337x.to-Scraper
-Playwright scraper which selects torrents uploaded by a certain user
+A Playwright scraper which selects torrents uploaded by a certain user. Desktop app based on [Electron](https://electronjs.org/).
 
-How to use:
+To run this:
 ```
-node .\script.js Breaking Bad
+1. npm install
+2. npm run start
 ```
